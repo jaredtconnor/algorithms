@@ -1,6 +1,3 @@
-''' 
-
-'''
 def recursive_hanoi(n, source, temp, target): 
     if n > 0: 
         recursive_hanoi(n-1, source, target, temp)
