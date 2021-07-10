@@ -1,7 +1,9 @@
-import math
-## Dynamic brute force algorithm for making change problem, given some amount
+## Dynamic Programming - Make change problem but from a top down approach
+## i.e., utilizing memoization.
 
 def makechangeBF(coins, amount):
+
+    countmemo = {0:0}
 
     # Base case or stopping condition
     if(amount == 0): 
