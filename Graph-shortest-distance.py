@@ -13,7 +13,7 @@ def shortest_path(graph, starting_vertex):
         if current_distance > distances[current_vertex]: 
             continue
 
-        for neighbor, weight, in graph[current_vertex.items()]: 
+        for neighbor, weight, in graph[current_vertex].items(): 
             distance = current_distance + weight
 
             if distance < distances[neighbor]: 
