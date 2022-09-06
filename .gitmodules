@@ -1,3 +1,0 @@
-[submodule "leetcode_problems"]
-	path = leetcode_problems
-	url = git@github.com:jaredtconnor/leetcode.git
