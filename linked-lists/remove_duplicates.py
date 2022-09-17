@@ -16,16 +16,19 @@ class Node:
 def remove_dup(lst):
 
     current = lst
-    prev = lst
+    
+    if current is None: 
+        return
 
-    while current.next is not None:
+    while current.next is not None: 
 
-        if prev.value == current.value:  
-            current.value = None
-            prev.next = current.next
-        
-        prev = current
-        current = current.next
+        if current.value == current.next.value: 
+            temp = current.next.next
+            current.next = None
+            current.next = temp
+        else: 
+            current = current.next
+
 
 lst = Node(1, Node(2, Node(2, Node(3, Node(3)))))
 
