@@ -8,7 +8,8 @@ adj = {
     'E': ['D', 'C'],
     'F': ['B', 'C'],
     'G': ['B']
-    }
+}
+
 
 def Breadth_first_search(adj_list):
 
@@ -43,6 +44,7 @@ def Breadth_first_search(adj_list):
                 queue.put(v)
 
     return traversal_output, visited, level, parent
+
 
 traversed, visited, level, parent = Breadth_first_search(adj)
 

@@ -1,26 +1,28 @@
 import heapq
 import math
 
-def shortest_path(graph, starting_vertex): 
+
+def shortest_path(graph, starting_vertex):
     distances = {vertex: math.inf for vertex in graph}
-    distances[starting_vertex] = 0 
+    distances[starting_vertex] = 0
 
     pq = [(0, starting_vertex)]
 
-    while len(pq) > 0: 
-        current_distance, current_vertex = heapq.heappop(pq) 
+    while len(pq) > 0:
+        current_distance, current_vertex = heapq.heappop(pq)
 
-        if current_distance > distances[current_vertex]: 
+        if current_distance > distances[current_vertex]:
             continue
 
-        for neighbor, weight, in graph[current_vertex].items(): 
+        for neighbor, weight, in graph[current_vertex].items():
             distance = current_distance + weight
 
-            if distance < distances[neighbor]: 
+            if distance < distances[neighbor]:
                 distances[neighbor] = distance
                 heapq.heappush(pq, (distance, neighbor))
 
     return distances
+
 
 test_graph = {
     'U': {'V': 2, 'W': 5, 'X': 1},
