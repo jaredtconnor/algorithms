@@ -9,14 +9,11 @@ class Solution:
         return [-1, -1]
 
     def TwoSums_dict(self, nums: list[int], target: int) -> list[int]:
-    
-        hashmap = {} 
 
-        for i, num in enumerate(nums): 
-            hashmaps = i 
+        prev_map = {}  # Val: index
+        for i, num in enumerate(nums):
+            diff = target - num
+            if diff in prev_map:
+                return [prev_map[diff], i]
 
-        for i, num enumerate(nums): 
-            second_num = target - num 
-            if second_num in hashmaps.keys(): 
-                return [hashmaps[second_num], i]
-
+            prev_map[num] = i

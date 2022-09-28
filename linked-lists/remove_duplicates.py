@@ -1,8 +1,8 @@
 # Hi, here's your problem today. This problem was recently asked by Amazon:
-#
-# Given a sorted linked list of integers, remove all the duplicate elements in the linked list
+# Given a sorted linked list of integers, remove all the duplicate elements in
+# the linked list
 # so that all elements in the linked list are unique.
-
+#
 # Here's an example and some starter code:
 
 class Node:
@@ -13,18 +13,17 @@ class Node:
     def __repr__(self):
         return f"({self.value}, {self.next})"
 
+
 def remove_dup(lst):
 
     current = lst
 
-    # Stopping conidtion
     if current is None:
         return
 
     while current.next is not None:
 
-        if current.value == current.next.valu:
-
+        if current.value == current.next.value:
             temp = current.next.next
             current.next = None
             current.next = temp

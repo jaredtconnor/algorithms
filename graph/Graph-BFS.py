@@ -1,14 +1,15 @@
 from queue import Queue
 
 adj = {
-    'A': ['D', 'B'],
-    'B': ['A', 'G', 'F'],
-    'C': ['D', 'E', 'F'],
-    'D': ['A', 'C', 'E'],
-    'E': ['D', 'C'],
-    'F': ['B', 'C'],
-    'G': ['B']
-    }
+    "A": ["D", "B"],
+    "B": ["A", "G", "F"],
+    "C": ["D", "E", "F"],
+    "D": ["A", "C", "E"],
+    "E": ["D", "C"],
+    "F": ["B", "C"],
+    "G": ["B"],
+}
+
 
 def Breadth_first_search(adj_list):
 
@@ -43,6 +44,7 @@ def Breadth_first_search(adj_list):
                 queue.put(v)
 
     return traversal_output, visited, level, parent
+
 
 traversed, visited, level, parent = Breadth_first_search(adj)
 
