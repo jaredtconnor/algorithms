@@ -1,56 +1,40 @@
 import time
 import unittest
 from collections import defaultdict
+from collections import Counter
+
+"""
+Chapter 01 - Problem 01 - CTCI 6e pg. 90
+
+Problem Statement:
+    Implement an algorithm to determine if a string has all unique
+    characters. What if you cannot use additional data structures?
 
 
-def is_unique_chars_algorithmic(string):
+Example:
+    "alex" -> True
+    "aalex" -> False
+
+Solution:
 
 
-def is_unique_chars_pythonic(string):
-    return len(set(string)) == len(string)
+"""
 
 
-def is_unique_bit_vector(string):
-    """Uses bitwise operation instead of extra data structures."""
-    # Assuming character set is ASCII (128 characters)
-    if len(string) > 128:
-        return False
+def is_unique_python(input_text: str):
+    return len(set(input_text)) == len(input_text)
 
-    checker = 0
-    for c in string:
-        val = ord(c)
-        if (checker & (1 << val)) > 0:
+
+def is_unique_no_datastruct(input_text: str):
+    sorted_text = sorted(input_text)
+
+    last_char = None
+
+    for char in sorted_text:
+        if char == last_char:
             return False
-        checker |= 1 << val
-    return True
+        last_char = char
 
-
-def is_unique_chars_using_dictionary(string: str) -> bool:
-    character_counts = {}
-    for char in string:
-        if char in character_counts:
-            return False
-        character_counts[char] = 1
-    return True
-
-
-def is_unique_chars_using_set(string: str) -> bool:
-    characters_seen = set()
-    for char in string:
-        if char in characters_seen:
-            return False
-        characters_seen.add(char)
-    return True
-
-
-# O(NlogN)
-def is_unique_chars_sorting(string: str) -> bool:
-    sorted_string = sorted(string)
-    last_character = None
-    for char in sorted_string:
-        if char == last_character:
-            return False
-        last_character = char
     return True
 
 
@@ -61,17 +45,13 @@ class Test(unittest.TestCase):
         ("", True),
         ("23ds2", False),
         ("hb 627jh=j ()", False),
-        ("".join([chr(val) for val in range(128)]), True),  # unique 128 chars
-        ("".join([chr(val // 2) for val in range(129)]), False),  # non-unique 129 chars
+        ("".join([chr(val) for val in range(128)]), True),
+        # unique 128 chars
+        ("".join([chr(val // 2) for val in range(129)]), False),
+        # non-unique 129 chars
     ]
-    test_functions = [
-        is_unique_chars_pythonic,
-        is_unique_chars_algorithmic,
-        is_unique_bit_vector,
-        is_unique_chars_using_dictionary,
-        is_unique_chars_using_set,
-        is_unique_chars_sorting,
-    ]
+
+    test_functions = [is_unique_python, is_unique_no_datastruct]
 
     def test_is_unique_chars(self):
         num_runs = 1000
