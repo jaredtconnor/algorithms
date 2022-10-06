@@ -66,20 +66,24 @@ class Test(unittest.TestCase):
         # non-unique 129 chars
     ]
 
-    test_functions = [is_unique_python, is_unique_no_datastruct, is_unique_boolean]
+    test_functions = [
+            is_unique_python,
+            is_unique_no_datastruct,
+            is_unique_boolean
+    ]
 
     def test_is_unique_chars(self):
         num_runs = 1000
         function_runtimes = defaultdict(float)
 
         for _ in range(num_runs):
-            for text, expected in self.test_cases:
-                for is_unique_chars in self.test_functions:
+            for test, expected in self.test_cases:
+                for test_function in self.test_functions:
                     start = time.perf_counter()
                     assert (
-                        is_unique_chars(text) == expected
-                    ), f"{is_unique_chars.__name__} failed for value: {text}"
-                    function_runtimes[is_unique_chars.__name__] += (
+                        test_function(test) == expected
+                    ), f"{test_function.__name__} failed for value: {test}"
+                    function_runtimes[test_function.__name__] += (
                         time.perf_counter() - start
                     ) * 1000
 
