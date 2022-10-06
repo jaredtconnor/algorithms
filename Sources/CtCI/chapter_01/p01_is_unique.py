@@ -38,6 +38,21 @@ def is_unique_no_datastruct(input_text: str):
     return True
 
 
+def is_unique_boolean(input_text: str):
+
+    hash_table = [False] * 128
+
+    for c in input_text:
+        index = ord(c)
+
+        if hash_table[index]:
+            return False
+
+        hash_table[index] = True
+
+    return True
+
+
 class Test(unittest.TestCase):
     test_cases = [
         ("abcd", True),
@@ -51,7 +66,7 @@ class Test(unittest.TestCase):
         # non-unique 129 chars
     ]
 
-    test_functions = [is_unique_python, is_unique_no_datastruct]
+    test_functions = [is_unique_python, is_unique_no_datastruct, is_unique_boolean]
 
     def test_is_unique_chars(self):
         num_runs = 1000
