@@ -6,16 +6,16 @@ from collections import Counter
 """
 Chapter 02 - Problem 02 - CTCI 6e pg. 90
 
-Problem Statement: 
+Problem Statement:
     Given two strings write a method to decide
     if one is a permutation of the other
 
 Example:
-    ("dog", "god") -> True 
-    ("adbc", "abc") -> False 
+    ("dog", "god") -> True
+    ("adbc", "abc") -> False
 
-Solution: 
-    If two strings are permutations of eachother, 
+Solution:
+    If two strings are permutations of eachother,
     we know they have the same characters, in different
     order. Therefore, if we sort the strings, this will put
     the characters into the same order and then compare the
