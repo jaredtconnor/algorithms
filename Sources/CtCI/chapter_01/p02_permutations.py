@@ -47,7 +47,8 @@ def check_permuations_reverse_count(s1: str, s2: str):
     if len(s1) != len(s2):
         return False
 
-    hash_map = [0] * 256
+    # Assuming only ASCII
+    hash_map = [0] * 128
 
     for c in s1:
         hash_map[ord(c)] += 1
@@ -79,10 +80,18 @@ class Test(unittest.TestCase):
 
     test_functions = [check_permuations, check_permuations_reverse_count]
 
-    def test_cp(self):
+    def test_cp_1(self):
         for test_function in self.test_functions:
             for s1, s2, expected in self.test_cases:
                 assert test_function(s1, s2) == expected
+
+    def test_cp_2(self):
+        for s1, s2, expected in self.test_cases:
+            assert check_permuations(s1, s2) == expected
+
+    def test_cp_3(self):
+        for s1, s2, expected in self.test_cases:
+            assert check_permuations_reverse_count(s1, s2) == expected
 
 
 if __name__ == "__main__":
