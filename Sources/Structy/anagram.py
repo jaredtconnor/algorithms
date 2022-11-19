@@ -1,4 +1,5 @@
 import unittest
+from collections import Counter
 
 
 def anagram_hashmap(s1, s2):
@@ -29,6 +30,33 @@ def anagram_sorted(s1, s2):
     return sorted(s1) == sorted(s2)
 
 
+def anagram_solution(s1, s2):
+    return build_map(s1) == build_map(s2)
+
+
+def anagram_counter(s1, s2):
+    return Counter(s1) == Counter(s2)
+
+
+def build_map(s):
+    """
+    Input: a string
+    Output: a dict containing the amount of each char in string
+
+    O(n) complexity over the input string
+    """
+
+    count_map = {}
+
+    for c in s:
+        if c not in count_map:
+            count_map[c] = 0
+
+        count_map[c] += 1
+
+    return count_map
+
+
 class Test(unittest.TestCase):
 
     test_cases = {
@@ -54,6 +82,16 @@ class Test(unittest.TestCase):
 
         for input_1, input_2, expected in self.test_cases:
             assert anagram_sorted(input_1, input_2) == expected
+
+    def test_3(self):
+
+        for input_1, input_2, expected in self.test_cases:
+            assert anagram_solution(input_1, input_2) == expected
+
+    def test_4(self):
+
+        for input_1, input_2, expected in self.test_cases:
+            assert anagram_counter(input_1, input_2) == expected
 
 
 if __name__ == "__main__":
