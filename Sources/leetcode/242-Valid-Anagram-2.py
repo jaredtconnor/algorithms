@@ -11,4 +11,3 @@ solution = Solution()
 result = solution.isAnagram(string_1, string_2)
 
 print(f"These two strings are anagrams: {result}")
-
