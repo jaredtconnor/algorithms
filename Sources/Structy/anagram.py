@@ -1,5 +1,4 @@
 import unittest
-from collections import defaultdict
 
 
 def anagram_hashmap(s1, s2):
@@ -16,8 +15,7 @@ def anagram_hashmap(s1, s2):
     for i in range(len(s1)):
         s1map[s1[i]] = 1 + s1map.get(s1[i], 0)
         s2map[s2[i]] = 1 + s2map.get(s2[i], 0)
-    
-    print(s1map)
+
     # Check each map and see if same value
     for c in s1map:
         if s1map[c] != s2map.get(c, 0):
