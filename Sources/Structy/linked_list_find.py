@@ -89,5 +89,6 @@ class Test(unittest.TestCase):
 
         self.assertEqual(linked_list_find(node1, 50), False)
 
+
 if __name__ == "__main__":
     unittest.main()
