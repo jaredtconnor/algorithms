@@ -9,12 +9,48 @@ class Node:
 
 def is_univalue_list(head: Node) -> bool:
 
-    return false
+    current = head
+
+    val = current.val
+    res = True
+
+    while current is not None:
+
+        if current.val == val:
+
+            current = current.next
+
+        else:
+            res = False
+            break
+
+    return res
 
 
 def is_univalue_list_recursive(head: Node) -> bool:
 
-    return head
+    res = True
+    val = head.val
+
+    res = _is_univalue_list_check(head, val)
+
+    return res
+
+
+def _is_univalue_list_check(head, val):
+
+    # Base case
+    if head.next is None and head.val == val:
+        return True
+
+    elif head.next is None and head.val != val:
+        return False
+
+    elif head.val != val:
+        return False
+
+    # 7 -> 7 -> 7 -> None
+    return _is_univalue_list_check(head.next, val)
 
 
 def print_list(head):
@@ -67,6 +103,43 @@ class Test(unittest.TestCase):
 
         expected = True
         res = is_univalue_list(z)  # True
+        assert res == expected
+
+    def test_4(self):
+
+        a = Node(7)
+        b = Node(7)
+        c = Node(7)
+
+        a.next = b
+        b.next = c  # 7 -> 7 -> 7
+
+        expected = True
+        res = is_univalue_list_recursive(a)  # True
+
+        assert res == expected
+
+    def test_5(self):
+
+        a = Node(7)
+        b = Node(7)
+        c = Node(4)
+
+        a.next = b
+        b.next = c
+        # 7 -> 7 -> 4
+
+        expected = False
+        res = is_univalue_list_recursive(a)  # False`
+
+        assert res == expected
+
+    def test_6(self):
+
+        z = Node("z")  # z
+
+        expected = True
+        res = is_univalue_list_recursive(z)  # True
         assert res == expected
 
 
