@@ -51,7 +51,6 @@ def print_list(head):
 
 
 class Test(unittest.TestCase):
-
     def test_1(self):
 
         a = Node("a")
@@ -66,7 +65,6 @@ class Test(unittest.TestCase):
         expected = ["a", "b", "c", "d"]
         res = linked_list_values(a)
         assert res == expected
-
 
     def test_2(self):
 

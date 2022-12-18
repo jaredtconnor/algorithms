@@ -27,6 +27,17 @@ def is_univalue_list(head: Node) -> bool:
     return res
 
 
+def is_univalue_list_recursive_solution(head, prev_val=None):
+
+    if head is None:
+        return True
+
+    elif prev_val is not None and head.val != prev_val:
+        return False
+
+    return is_univalue_list_recursive_solution(head.next, head.val)
+
+
 def is_univalue_list_recursive(head: Node) -> bool:
 
     res = True
