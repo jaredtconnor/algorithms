@@ -9,22 +9,27 @@ class Node:
 
 def longest_streak(head: Node) -> bool:
 
-    return res
+    max_streak = 0
+    current_streak = 0
+    prev_val = None
 
+    current = head
+    while current is not None:
 
-def longest_streak_recursive(head, prev_val=None):
+        if current.val == prev_val:
+            current_streak += 1
 
-    return is_univalue_list_recursive_solution(head.next, head.val)
+        else:
+            current_streak = 1
 
+        prev_val = current.val
 
-def is_univalue_list_recursive(head: Node) -> bool:
+        if current_streak > max_streak:
+            max_streak = current_streak
 
-    res = True
-    val = head.val
+        current = current.next
 
-    res = _is_univalue_list_check(head, val)
-
-    return res
+    return max_streak
 
 
 def print_list(head):
@@ -43,77 +48,89 @@ def print_list(head):
 
 class Test(unittest.TestCase):
     def test_1(self):
-
-        a = Node(7)
-        b = Node(7)
+        a = Node(5)
+        b = Node(5)
         c = Node(7)
+        d = Node(7)
+        e = Node(7)
+        f = Node(6)
 
         a.next = b
-        b.next = c  # 7 -> 7 -> 7
+        b.next = c
+        c.next = d
+        d.next = e
+        e.next = f
 
-        expected = True
-        res = is_univalue_list(a)  # True
-
+        # 5 -> 5 -> 7 -> 7 -> -> 7 -> 6
+        res = longest_streak(a)  # 3
+        expected = 3
         assert res == expected
 
     def test_2(self):
 
-        a = Node(7)
-        b = Node(7)
-        c = Node(4)
+        a = Node(3)
+        b = Node(3)
+        c = Node(3)
+        d = Node(3)
+        e = Node(9)
+        f = Node(9)
 
         a.next = b
         b.next = c
-        # 7 -> 7 -> 4
+        c.next = d
+        d.next = e
+        e.next = f
+        # 3 -> 3 -> 3 -> 3 -> 9 -> 9
 
-        expected = False
-        res = is_univalue_list(a)  # False`
+        res = longest_streak(a)  # 4
+        expected = 4
 
         assert res == expected
 
     def test_3(self):
 
-        z = Node("z")  # z
+        a = Node(9)
+        b = Node(9)
+        c = Node(1)
+        d = Node(9)
+        e = Node(9)
+        f = Node(9)
 
-        expected = True
-        res = is_univalue_list(z)  # True
+        a.next = b
+        b.next = c
+        c.next = d
+        d.next = e
+        e.next = f
+        # 9 -> 9 -> 1 -> 9 -> 9 -> 9
+
+        res = longest_streak(a)  # 3
+        expected = 3
         assert res == expected
 
     def test_4(self):
+        a = Node(5)
+        b = Node(5)
 
-        a = Node(7)
-        b = Node(7)
-        c = Node(7)
+        a.next = b  # 5 -> 5
 
-        a.next = b
-        b.next = c  # 7 -> 7 -> 7
-
-        expected = True
-        res = is_univalue_list_recursive(a)  # True
+        res = longest_streak(a)  # 2
+        expected = 2
 
         assert res == expected
 
     def test_5(self):
+        a = Node(4)
+        # 4
 
-        a = Node(7)
-        b = Node(7)
-        c = Node(4)
-
-        a.next = b
-        b.next = c
-        # 7 -> 7 -> 4
-
-        expected = False
-        res = is_univalue_list_recursive(a)  # False`
+        res = longest_streak(a)  # 1
+        expected = 1
 
         assert res == expected
 
     def test_6(self):
 
-        z = Node("z")  # z
-
-        expected = True
-        res = is_univalue_list_recursive(z)  # True
+        res = longest_streak(None)  # 0
+        expected = 0
         assert res == expected
 
 
