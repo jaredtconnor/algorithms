@@ -27,12 +27,7 @@ def longest_streak(head: Node) -> int:
 
         current = current.next
 
-    return res
-
-
-def longest_streak_recursive(head: Node) -> int:
-
-    return res
+    return max_streak
 
 
 def print_list(head):
@@ -51,7 +46,6 @@ def print_list(head):
 
 class Test(unittest.TestCase):
     def test_1(self):
-
         a = Node(5)
         b = Node(5)
         c = Node(7)
@@ -68,7 +62,6 @@ class Test(unittest.TestCase):
         # 5 -> 5 -> 7 -> 7 -> -> 7 -> 6
         res = longest_streak(a)  # 3
         expected = 3
-
         assert res == expected
 
     def test_2(self):
@@ -113,7 +106,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_4(self):
-
         a = Node(5)
         b = Node(5)
 
@@ -125,18 +117,18 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_5(self):
-
         a = Node(4)
         # 4
 
         res = longest_streak(a)  # 1
         expected = 1
+
         assert res == expected
 
     def test_6(self):
 
-        expected = None
-        res = longest_streak(None)
+        res = longest_streak(None)  # 0
+        expected = 0
         assert res == expected
 
 
