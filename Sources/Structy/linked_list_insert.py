@@ -33,6 +33,27 @@ def insert_node(head: Node, value: str, index: int):
     return head
 
 
+def insert_node_recursive(head: Node, value: str, index: int, count=0):
+
+    if index == 0:
+        new_head = Node(value)
+        new_head.next = head
+        return new_head
+
+    # Stopping condition
+    if head is None:
+        return None
+
+    if count == (index - 1):
+        temp = head.next
+        head.next = Node(value)
+        head.next.next = temp
+        return
+
+    insert_node_recursive(head.next, value, index, count + 1)
+    return head
+
+
 def print_list(head):
 
     res = ""
@@ -106,6 +127,68 @@ class Test(unittest.TestCase):
         # a -> b
 
         res = insert_node(a, "z", 0)
+        expected = "z -> a -> b"
+
+        assert print_list(res) == expected
+
+    def test_5(self):
+
+        a = Node("a")
+        b = Node("b")
+        c = Node("c")
+        d = Node("d")
+
+        a.next = b
+        b.next = c
+        c.next = d
+
+        res = insert_node_recursive(a, "x", 2)
+        expected = "a -> b -> x -> c -> d"
+
+        assert print_list(res) == expected
+
+    def test_6(self):
+
+        a = Node("a")
+        b = Node("b")
+        c = Node("c")
+        d = Node("d")
+
+        a.next = b
+        b.next = c
+        c.next = d
+        # a -> b -> c -> d
+
+        res = insert_node_recursive(a, "v", 3)
+        expected = "a -> b -> c -> v -> d"
+
+        assert print_list(res) == expected
+
+    def test_7(self):
+        a = Node("a")
+        b = Node("b")
+        c = Node("c")
+        d = Node("d")
+
+        a.next = b
+        b.next = c
+        c.next = d
+
+        # a -> b -> c -> d
+
+        res = insert_node_recursive(a, "m", 4)
+        expected = "a -> b -> c -> d -> m"
+
+        assert print_list(res) == expected
+
+    def test_8(self):
+
+        a = Node("a")
+        b = Node("b")
+        a.next = b
+        # a -> b
+
+        res = insert_node_recursive(a, "z", 0)
         expected = "z -> a -> b"
 
         assert print_list(res) == expected
