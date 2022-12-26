@@ -33,6 +33,19 @@ def create_linked_list_recursive(input: list):
     return head
 
 
+def create_linked_list_recursive_linear(input: list, index=0):
+
+    # Base Case - if input is end
+    if index == len(input):
+        return None
+
+    head = Node(str(input[index]))
+
+    head.next = create_linked_list_recursive(input, index + 1)
+
+    return head
+
+
 def print_list(head):
 
     res = ""
