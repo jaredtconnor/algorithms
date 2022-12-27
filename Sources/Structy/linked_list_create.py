@@ -41,7 +41,7 @@ def create_linked_list_recursive_linear(input: list, index=0):
 
     head = Node(str(input[index]))
 
-    head.next = create_linked_list_recursive(input, index + 1)
+    head.next = create_linked_list_recursive_linear(input, index + 1)
 
     return head
 
@@ -116,6 +116,13 @@ class Test(unittest.TestCase):
         expected = None
 
         assert res == expected
+
+    def test_9(self):
+
+        res = create_linked_list_recursive(["h", "e", "y"])
+        expected = "h -> e -> y"
+
+        assert print_list(res) == expected
 
 
 if __name__ == "__main__":
