@@ -1,4 +1,5 @@
 import unittest
+from collections import deque
 
 
 class Node:
@@ -8,18 +9,18 @@ class Node:
         self.right = None
 
 
-def depth_first_values(root: Node):
+def tree_sum(root: Node):
 
     if root is None:
-        return []
+        return 0
 
-    values = []
+    sum = 0
     stack = [root]
 
     while stack:
 
         current = stack.pop()
-        values.append(current.val)
+        sum += current.val
 
         if current.right is not None:
             stack.append(current.right)
@@ -27,215 +28,147 @@ def depth_first_values(root: Node):
         if current.left is not None:
             stack.append(current.left)
 
-    return values
+    return sum
 
 
-def depth_first_values_recursive(root: Node):
+def tree_sum_recursive(root: Node):
 
-    # Base case
     if root is None:
-        return []
+        return 0
 
-    # Recursive leap of faith
-    left_values = depth_first_values_recursive(root.left)
-    right_values = depth_first_values_recursive(root.right)
+    left_values = tree_sum_recursive(root.left)
+    right_values = tree_sum_recursive(root.right)
 
-    return [root.val, *left_values, *right_values]
+    return root.val + left_values + right_values
 
 
 class Test(unittest.TestCase):
     def test_case_1(self):
 
-        #      a
-        #    /   \
-        #   b     c
-        #  / \     \
-        # d   e     f
+        a = Node(3)
+        b = Node(11)
+        c = Node(4)
+        d = Node(4)
+        e = Node(-2)
+        f = Node(1)
 
-        a = Node("a")
-        b = Node("b")
-        c = Node("c")
-        d = Node("d")
-        e = Node("e")
-        f = Node("f")
         a.left = b
         a.right = c
         b.left = d
         b.right = e
         c.right = f
 
-        res = depth_first_values(a)
-        expected = ["a", "b", "d", "e", "c", "f"]
+        #       3
+        #    /    \
+        #   11     4
+        #  / \      \
+        # 4   -2     1
+
+        res = tree_sum(a)  # -> 21
+        expected = 21
 
         assert res == expected
 
     def test_case_2(self):
+        a = Node(1)
+        b = Node(6)
+        c = Node(0)
+        d = Node(3)
+        e = Node(-6)
+        f = Node(2)
+        g = Node(2)
+        h = Node(2)
 
-        a = Node("a")
-        b = Node("b")
-        c = Node("c")
-        d = Node("d")
-        e = Node("e")
-        f = Node("f")
-        g = Node("g")
         a.left = b
         a.right = c
         b.left = d
         b.right = e
         c.right = f
         e.left = g
+        f.right = h
 
-#       3
-#    /    \
-#   11     4
-#  / \      \
-# 4   -2     1
-
-
-
-        #      a
+        #      1
         #    /   \
-        #   b     c
+        #   6     0
         #  / \     \
-        # d   e     f
-        #    /
-        #   g
-        res = depth_first_values(a)
-        expected = ["a", "b", "d", "e", "g", "c", "f"]
+        # 3   -6    2
+        #    /       \
+        #   2         2
+
+        res = tree_sum(a)  # -> 10
+        expected = 10
+
         assert res == expected
 
     def test_case_3(self):
 
-        #     a
-        a = Node("a")
-
-        res = depth_first_values(a)
-        expected = ["a"]
+        res = tree_sum(None)  # -> 0
+        expected = 0
 
         assert res == expected
 
     def test_case_4(self):
 
-        a = Node("a")
-        b = Node("b")
-        c = Node("c")
-        d = Node("d")
-        e = Node("e")
-        a.right = b
-        b.left = c
-        c.right = d
-        d.right = e
+        a = Node(3)
+        b = Node(11)
+        c = Node(4)
+        d = Node(4)
+        e = Node(-2)
+        f = Node(1)
 
-        #      a
-        #       \
-        #        b
-        #       /
-        #      c
-        #       \
-        #        d
-        #         \
-        #          e
-
-        res = depth_first_values(a)
-        expected = ["a", "b", "c", "d", "e"]
-        assert res == expected
-
-    def test_case_5(self):
-        res = depth_first_values(None)
-        expected = []
-        assert res == expected
-
-    def test_case_6(self):
-
-        #      a
-        #    /   \
-        #   b     c
-        #  / \     \
-        # d   e     f
-
-        a = Node("a")
-        b = Node("b")
-        c = Node("c")
-        d = Node("d")
-        e = Node("e")
-        f = Node("f")
         a.left = b
         a.right = c
         b.left = d
         b.right = e
         c.right = f
 
-        res = depth_first_values_recursive(a)
-        expected = ["a", "b", "d", "e", "c", "f"]
+        #       3
+        #    /    \
+        #   11     4
+        #  / \      \
+        # 4   -2     1
+
+        res = tree_sum_recursive(a)  # -> 21
+        expected = 21
 
         assert res == expected
 
-    def test_case_7(self):
+    def test_case_4(self):
+        a = Node(1)
+        b = Node(6)
+        c = Node(0)
+        d = Node(3)
+        e = Node(-6)
+        f = Node(2)
+        g = Node(2)
+        h = Node(2)
 
-        a = Node("a")
-        b = Node("b")
-        c = Node("c")
-        d = Node("d")
-        e = Node("e")
-        f = Node("f")
-        g = Node("g")
         a.left = b
         a.right = c
         b.left = d
         b.right = e
         c.right = f
         e.left = g
+        f.right = h
 
-        #      a
+        #      1
         #    /   \
-        #   b     c
+        #   6     0
         #  / \     \
-        # d   e     f
-        #    /
-        #   g
-        res = depth_first_values_recursive(a)
-        expected = ["a", "b", "d", "e", "g", "c", "f"]
-        assert res == expected
+        # 3   -6    2
+        #    /       \
+        #   2         2
 
-    def test_case_8(self):
-
-        #     a
-        a = Node("a")
-
-        res = depth_first_values_recursive(a)
-        expected = ["a"]
+        res = tree_sum_recursive(a)  # -> 10
+        expected = 10
 
         assert res == expected
 
-    def test_case_9(self):
+    def test_case_5(self):
 
-        a = Node("a")
-        b = Node("b")
-        c = Node("c")
-        d = Node("d")
-        e = Node("e")
-        a.right = b
-        b.left = c
-        c.right = d
-        d.right = e
+        res = tree_sum_recursive(None)  # -> 0
+        expected = 0
 
-        #      a
-        #       \
-        #        b
-        #       /
-        #      c
-        #       \
-        #        d
-        #         \
-        #          e
-
-        res = depth_first_values_recursive(a)
-        expected = ["a", "b", "c", "d", "e"]
-        assert res == expected
-
-    def test_case_10(self):
-        res = depth_first_values_recursive(None)
-        expected = []
         assert res == expected
 
 
