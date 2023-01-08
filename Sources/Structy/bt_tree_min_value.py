@@ -33,10 +33,15 @@ def tree_min_value(root: Node):
     return min_val
 
 
-## def tree_min_value(root: Node, min_val: int):
+def tree_min_value_recursive(root: Node):
 
-##  if root is None:
-##     return
+    if root is None:
+        return float("inf")
+
+    left_values = tree_min_value_recursive(root.left)
+    right_values = tree_min_value_recursive(root.right)
+
+    return min(root.val, left_values, right_values)
 
 
 class Test(unittest.TestCase):
@@ -127,6 +132,96 @@ class Test(unittest.TestCase):
         #        42
 
         res = tree_min_value(a)  # -> 42
+        expected = 42
+        assert res == expected
+
+    def test_case_5(self):
+
+        a = Node(3)
+        b = Node(11)
+        c = Node(4)
+        d = Node(4)
+        e = Node(-2)
+        f = Node(1)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.right = f
+
+        #       3
+        #    /    \
+        #   11     4
+        #  / \      \
+        # 4   -2     1
+
+        res = tree_min_value_recursive(a)  # -> -2
+        expected = -2
+
+        assert res == expected
+
+    def test_case_6(self):
+
+        a = Node(5)
+        b = Node(11)
+        c = Node(3)
+        d = Node(4)
+        e = Node(14)
+        f = Node(12)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.right = f
+
+        #       5
+        #    /    \
+        #   11     3
+        #  / \      \
+        # 4   14     12
+
+        res = tree_min_value_recursive(a)  # -> 3
+        expected = 3
+        assert res == expected
+
+    def test_case_7(self):
+
+        a = Node(-1)
+        b = Node(-6)
+        c = Node(-5)
+        d = Node(-3)
+        e = Node(-4)
+        f = Node(-13)
+        g = Node(-2)
+        h = Node(-2)
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.right = f
+        e.left = g
+        f.right = h
+
+        #        -1
+        #      /   \
+        #    -6    -5
+        #   /  \     \
+        # -3   -4   -13
+        #     /       \
+        #    -2       -2
+
+        res = tree_min_value_recursive(a)  # -> -13
+        expected = -13
+        assert res == expected
+
+    def test_case_8(self):
+        a = Node(42)
+        #        42
+
+        res = tree_min_value_recursive(a)  # -> 42
         expected = 42
         assert res == expected
 
