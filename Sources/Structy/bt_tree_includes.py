@@ -9,7 +9,7 @@ class Node:
         self.right = None
 
 
-def tree_includes(root: Node, tofind: str):
+def tree_includes(root: Node, target: str):
 
     if root is None:
         return False
@@ -20,7 +20,7 @@ def tree_includes(root: Node, tofind: str):
 
         current = queue.popleft()
 
-        if current.val == tofind:
+        if current.val == target:
             return True
 
         if current.left is not None:
@@ -32,16 +32,16 @@ def tree_includes(root: Node, tofind: str):
     return False
 
 
-def tree_includes_recursive(root: Node, tofind: str):
+def tree_includes_recursive(root: Node, target: str):
 
     if root is None:
         return False
 
-    if root.val == tofind:
+    if root.val == target:
         return True
 
-    left_values = tree_includes_recursive(root.left, tofind)
-    right_values = tree_includes_recursive(root.right, tofind)
+    left_values = tree_includes_recursive(root.left, target)
+    right_values = tree_includes_recursive(root.right, target)
 
     if left_values or right_values:
         result = True
