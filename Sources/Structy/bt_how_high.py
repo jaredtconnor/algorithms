@@ -8,19 +8,16 @@ class Node:
         self.right = None
 
 
-def how_high(root: Node):
+def how_high(root):
 
     # Base case 1
     if root is None:
         return -1
 
-    # Base case 2 - Root node
-    if root.left is None and root.right is None:
-        return 0
+    left_tree_height = how_high(root.left)
+    right_tree_height = how_high(root.right)
 
-    height = max(how_high(root.left), how_high(root.right))
-
-    return
+    return 1 + max(left_tree_height, right_tree_height)
 
 
 class Test(unittest.TestCase):
