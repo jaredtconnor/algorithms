@@ -117,6 +117,7 @@ class Test(unittest.TestCase):
 
         res = max_path_sum(a)  # -> 42
         expected = 42
+        assert res == expected
 
 
 if __name__ == "__main__":
