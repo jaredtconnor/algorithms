@@ -50,5 +50,45 @@ class Test(unittest.TestCase):
         assert res == expected
 
 
+    def test_case_2(self): 
+        a = Node('a')
+        b = Node('b')
+        c = Node('c')
+        d = Node('d')
+        e = Node('e')
+        f = Node('f')
+        g = Node('g')
+        h = Node('h')
+        i = Node('i')
+
+        a.left = b
+        a.right = c
+        b.left = d
+        b.right = e
+        c.right = f
+        e.left = g
+        e.right = h
+        f.left = i
+
+        #         a
+        #      /    \
+        #     b      c
+        #   /  \      \
+        #  d    e      f
+        #      / \    /
+        #     g  h   i
+
+        res = tree_levels(a) 
+
+        expected = [
+          ['a'],
+          ['b', 'c'],
+          ['d', 'e', 'f'],
+          ['g', 'h', 'i']
+        ]
+        
+        assert res ==  expected
+    
+
 if __name__ == "__main__":
     unittest.main()
