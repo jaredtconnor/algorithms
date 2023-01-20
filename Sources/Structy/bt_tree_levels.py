@@ -1,4 +1,4 @@
-import unittest 
+import unittest
 from collections import deque
 
 
@@ -9,7 +9,7 @@ class Node:
         self.right = None
 
 
-def tree_levels_dfs(root: Node ):
+def tree_levels_dfs(root: Node):
 
     if root is None:
         return []
@@ -19,23 +19,23 @@ def tree_levels_dfs(root: Node ):
 
     while stack:
 
-        current, level_num = stack.pop() 
+        current, level_num = stack.pop()
 
-        if len(levels) == level_num: 
-            levels.append([current.val]) 
-        else: 
+        if len(levels) == level_num:
+            levels.append([current.val])
+        else:
             levels[level_num].append(current.val)
 
         if current.right is not None:
-            stack.append((current.right, level_num + 1)) 
+            stack.append((current.right, level_num + 1))
 
         if current.left is not None:
             stack.append((current.left, level_num + 1))
-    
-    return levels  
+
+    return levels
 
 
-def tree_levels_bfs(root: Node):  
+def tree_levels_bfs(root: Node):
 
     if root is None:
         return []
@@ -47,41 +47,43 @@ def tree_levels_bfs(root: Node):
 
         current, level_num = queue.popleft()
 
-        if len(levels) == level_num: 
-            levels.append([current.val]) 
-        else: 
+        if len(levels) == level_num:
+            levels.append([current.val])
+        else:
             levels[level_num].append(current.val)
 
         if current.left is not None:
-            queue.append((current.left, level_num + 1)) 
+            queue.append((current.left, level_num + 1))
 
         if current.right is not None:
-            queue.append((current.right, level_num + 1)) 
-    
-    return levels  
+            queue.append((current.right, level_num + 1))
+
+    return levels
 
 
-def tree_levels_recursive(root: None): 
-    
+def tree_levels_recursive(root: None):
+
     levels = []
 
     fill_levels(root, levels, 0)
-        
+
     return levels
 
-def fill_levels(current, levels, level_num):
-    
-    # Base case 
-    if current is None: 
-        return 
 
-    if len(levels) == level_num: 
-        levels.append([current.val]) 
-    else: 
+def fill_levels(current, levels, level_num):
+
+    # Base case
+    if current is None:
+        return
+
+    if len(levels) == level_num:
+        levels.append([current.val])
+    else:
         levels[level_num].append(current.val)
 
     fill_levels(current.left, levels, level_num + 1)
     fill_levels(current.right, levels, level_num + 1)
+
 
 class Test(unittest.TestCase):
     def test_case_1(self):
@@ -133,9 +135,9 @@ class Test(unittest.TestCase):
 
         #         a
         #      /    \
-                #     b      c
+        #     b      c
         #   /  \      \
-                #  d    e      f
+        #  d    e      f
         #      / \    /
         #     g  h   i
 
@@ -161,9 +163,9 @@ class Test(unittest.TestCase):
 
         #      q
         #    /   \
-                #   r     s
+        #   r     s
         #    \
-                #     t
+        #     t
         #    /
         #   u
         #  /
@@ -231,9 +233,9 @@ class Test(unittest.TestCase):
 
         #         a
         #      /    \
-                #     b      c
+        #     b      c
         #   /  \      \
-                #  d    e      f
+        #  d    e      f
         #      / \    /
         #     g  h   i
 
@@ -259,9 +261,9 @@ class Test(unittest.TestCase):
 
         #      q
         #    /   \
-                #   r     s
+        #   r     s
         #    \
-                #     t
+        #     t
         #    /
         #   u
         #  /
@@ -280,7 +282,6 @@ class Test(unittest.TestCase):
 
         assert res == expected
 
-    
     def test_case_9(self):
 
         a = Node("a")
@@ -330,9 +331,9 @@ class Test(unittest.TestCase):
 
         #         a
         #      /    \
-                #     b      c
+        #     b      c
         #   /  \      \
-                #  d    e      f
+        #  d    e      f
         #      / \    /
         #     g  h   i
 
@@ -358,9 +359,9 @@ class Test(unittest.TestCase):
 
         #      q
         #    /   \
-            #   r     s
+        #   r     s
         #    \
-                #     t
+        #     t
         #    /
         #   u
         #  /
