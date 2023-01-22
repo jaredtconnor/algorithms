@@ -152,6 +152,7 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_5(self):
+
         res = level_averages(None)
         expected = []
         assert res == expected
