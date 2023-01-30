@@ -68,7 +68,7 @@ def level_averages_bfs(root: Node):
     for level in levels:
         avgs.append(sum(level) / len(level))
 
-    return levels
+    return avgs
 
 
 class Test(unittest.TestCase):
@@ -213,7 +213,7 @@ class Test(unittest.TestCase):
         expected = [3, 7.5, 1]
         assert res == expected
 
-    def test_case_2(self):
+    def test_case_7(self):
         a = Node(5)
         b = Node(11)
         c = Node(54)
@@ -241,7 +241,7 @@ class Test(unittest.TestCase):
         expected = [5, 32.5, 17.5, 2]
         assert res == expected
 
-    def test_case_3(self):
+    def test_case_8(self):
         a = Node(-1)
         b = Node(-6)
         c = Node(-5)
@@ -271,7 +271,7 @@ class Test(unittest.TestCase):
         expected = [-1, -5.5, 14, -1.5]
         assert res == expected
 
-    def test_case_4(self):
+    def test_case_9(self):
 
         q = Node(13)
         r = Node(4)
@@ -300,7 +300,7 @@ class Test(unittest.TestCase):
         expected = [13, 3, 9, 2, 42]
         assert res == expected
 
-    def test_case_5(self):
+    def test_case_10(self):
 
         res = level_averages_bfs(None)
         expected = []
