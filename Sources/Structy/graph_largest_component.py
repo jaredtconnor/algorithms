@@ -9,7 +9,7 @@ def largest_component(graph):
 
     for node in graph:
 
-        connected_node_size = size_connected(graph, node, visited, 0)
+        connected_node_size = size_connected(graph, node, visited)
 
         if connected_node_size > current_max:
             current_max = connected_node_size
@@ -17,19 +17,21 @@ def largest_component(graph):
     return current_max
 
 
-def size_connected(graph, current, visited, count):
+def size_connected(graph, current, visited):
 
     if current in visited:
-        return count + 0
+        return 0
 
     visited.add(current)
 
+    size = 1
+
     for neighbor in graph[current]:
-        count += size_connected(graph, neighbor, visited, count)
+        size += size_connected(graph, neighbor, visited)
 
     # Only returns true if node never
     # visited
-    return 1
+    return size
 
 
 class Test(unittest.TestCase):
@@ -83,18 +85,4 @@ class Test(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    # unittest.main()
-
-    res = largest_component(
-        {
-            0: [8, 1, 5],
-            1: [0],
-            5: [0, 8],
-            8: [0, 5],
-            2: [3, 4],
-            3: [2, 4],
-            4: [3, 2],
-        }
-    )
-
-    print(f"This is the result {res}")
+    unittest.main()
