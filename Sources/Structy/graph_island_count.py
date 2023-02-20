@@ -22,7 +22,7 @@ def search_island(grid, r, c, visited):
 
     # Base case 1 - in bounds
     if row_inbounds is False or column_inbounds is False:
-        return False  # Retrun False if a new island is not found
+        return False  # Return False if a new island is not found
 
     # Base case 2 - space is water
     if grid[r][c] == "W":
