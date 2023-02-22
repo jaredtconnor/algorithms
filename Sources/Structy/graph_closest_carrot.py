@@ -35,10 +35,9 @@ def closest_carrot(grid, starting_row, starting_col):
                 and col_inbounds
                 and grid[neighbor_row][neighbor_col] != "X"
                 and pos not in visited
-            ): 
-
-            queue.append((neighbor_row, neighbor_col, dist + 1))
-            visited.add(pos)
+            ):
+                queue.append((neighbor_row, neighbor_col, dist + 1))
+                visited.add(pos)
 
     return -1
 
