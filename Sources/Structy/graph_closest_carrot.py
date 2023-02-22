@@ -2,20 +2,20 @@ import unittest
 from collections import deque
 
 
-def closest_carrot(grid, starting_row, starting_col): 
+def closest_carrot(grid, starting_row, starting_col):
 
     # Create our queue that stores (row, col, distance)
     visited = set([(starting_row, starting_col)])
     queue = deque([(starting_row, starting_col, 0)])
 
-    while queue: 
+    while queue:
 
         # Pop the current from our queue
-        row, col, distance = queue.popleft()
+        row, col, dist = queue.popleft()
 
         # Check if the queue is the carrot
         if grid[row][col] == "C":
-            return distance
+            return dist
 
         movements = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
@@ -30,9 +30,15 @@ def closest_carrot(grid, starting_row, starting_col):
 
             pos = (neighbor_row, neighbor_col)
 
-            if row_inbounds and col_inbounds and grid[neighbor_row][neighbor_col] != "X" and pos not in visited:
-                queue.append((neighbor_row, neighbor_col, distance + 1))  
-                visited.add(pos)
+            if (
+                row_inbounds
+                and col_inbounds
+                and grid[neighbor_row][neighbor_col] != "X"
+                and pos not in visited
+            ): 
+
+            queue.append((neighbor_row, neighbor_col, dist + 1))
+            visited.add(pos)
 
     return -1
 
