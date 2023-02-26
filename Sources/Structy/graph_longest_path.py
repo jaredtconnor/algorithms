@@ -2,19 +2,21 @@ import unittest
 
 
 def longest_path(graph):
-
-    visited = set()
-
-    current_max = 0
-
+    
     for node in graph:
 
-        connected_node_size = size_connected(graph, node, visited)
 
-        if connected_node_size > current_max:
-            current_max = connected_node_size
 
-    return current_max
+
+
+        def explore_node(graph): 
+
+
+
+
+
+
+
 
 
 class Test(unittest.TestCase):
