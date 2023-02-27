@@ -2,21 +2,35 @@ import unittest
 
 
 def longest_path(graph):
-    
+
+    distance = {}
+
+    # Locate terminal nodes
     for node in graph:
 
+        if len(graph[node]) == 0:
+            distance[node] = 0
+
+    for node in graph:
+        traverse_distance(graph, node, distance)
+
+    return max(distance.values())
 
 
+def traverse_distance(graph, current, distance):
 
+    if current in distance:
+        return distance[current]
 
-        def explore_node(graph): 
+    max_path = 0
+    for neighbor in graph[current]:
+        path = traverse_distance(graph, neighbor, distance)
 
+        if path > max_path:
+            max_path = path
 
-
-
-
-
-
+    distance[current] = 1 + max_path
+    return distance[current]
 
 
 class Test(unittest.TestCase):
