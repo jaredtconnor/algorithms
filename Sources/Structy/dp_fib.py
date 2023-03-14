@@ -1,23 +1,25 @@
 import unittest
 
 
-def fib(n): 
+def fib(n):
 
     memo = {}
 
     return _fib(n, memo)
 
-def _fib(n, memo): 
 
-    if n == 0 or n == 1: 
+def _fib(n, memo):
+
+    if n == 0 or n == 1:
         return n
 
     if n in memo:
-        return memo[n] 
-    
-    memo[n] = _fib(n-1, memo) + _fib(n-2, memo)
+        return memo[n]
+
+    memo[n] = _fib(n - 1, memo) + _fib(n - 2, memo)
 
     return memo[n]
+
 
 class Test(unittest.TestCase):
     def test_case_1(self):
