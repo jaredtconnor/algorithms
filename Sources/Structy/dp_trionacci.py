@@ -10,14 +10,14 @@ def tribonacci(n):
 
 def _trib(n, memo):
 
-    if n in memo:
-        return memo[n]
-
-    if n == 0:
+    if n == 0 or n == 1:
         return 0
 
-    if n == 1 or n == 2:
+    if n == 2:
         return 1
+
+    if n in memo:
+        return memo[n]
 
     memo[n] = +_trib(n - 3, memo) + _trib(n - 2, memo) + _trib(n - 1, memo)
 
@@ -87,9 +87,4 @@ class Test(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    # unittest.main()
-
-    res = tribonacci(14)
-    expected = 0
-
-    print(f"Res is {res}")
+    unittest.main()
