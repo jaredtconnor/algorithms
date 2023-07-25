@@ -1,6 +1,5 @@
 import unittest
 
-
 def summing_squares(n):
     return None
 
