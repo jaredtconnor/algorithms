@@ -1,13 +1,15 @@
 import unittest
 import math
 
+
 def summing_squares(n):
-    
+
     memo = {}
     return _summing_squares(n, memo)
 
+
 def _summing_squares(n, memo):
-    
+
     # DP Memo check
     if n in memo:
         return memo[n]
@@ -15,9 +17,9 @@ def _summing_squares(n, memo):
     # Base case
     if n == 0:
         return 0
-    
+
     # Set really large at init
-    min_squares = float('inf')
+    min_squares = float("inf")
 
     for i in range(1, math.floor(math.sqrt(n)) + 1):
         square = i * i
