@@ -3,7 +3,6 @@ import unittest
 
 def array_stepper(numbers):
     memo = {}
-
     return _array_stepper(numbers, 0, memo)
 
 
@@ -11,12 +10,17 @@ def _array_stepper(numbers, i, memo):
     if i in memo:
         return memo[i]
 
+    # If the current index is at the end of the list
+    # we have found a true case
     if i >= len(numbers) - 1:
         return True
 
-    max_step = numbers[i]
+    max_steps = numbers[i]
 
-    for step in range(1, max_step + 1):
+    # Iterate through the remaining of the array
+    # recursively calling if we can reach the end of
+    # the array with the current index
+    for step in range(1, max_steps + 1):
         if _array_stepper(numbers, i + step, memo):
             memo[i] = True
             return memo[i]
