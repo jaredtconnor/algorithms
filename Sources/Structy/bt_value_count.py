@@ -10,7 +10,6 @@ class Node:
 
 
 def tree_value_count(root: Node, target: int):
-
     # Base case 1
     if root is None:
         return 0
@@ -24,7 +23,6 @@ def tree_value_count(root: Node, target: int):
 
 
 def tree_value_count_iterative(root: Node, target: int):
-
     if root is None:
         return 0
 
@@ -32,7 +30,6 @@ def tree_value_count_iterative(root: Node, target: int):
     stack = [root]
 
     while stack:
-
         current = stack.pop()
 
         if current.val == target:
@@ -49,7 +46,6 @@ def tree_value_count_iterative(root: Node, target: int):
 
 class Test(unittest.TestCase):
     def test_case_1(self):
-
         a = Node(12)
         b = Node(6)
         c = Node(6)
@@ -75,7 +71,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_2(self):
-
         a = Node(12)
         b = Node(6)
         c = Node(6)
@@ -100,7 +95,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_3(self):
-
         a = Node(7)
         b = Node(5)
         c = Node(1)
@@ -131,7 +125,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_4(self):
-
         a = Node(7)
         b = Node(5)
         c = Node(1)
@@ -162,13 +155,11 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_5(self):
-
         res = tree_value_count(None, 42)
         expected = 0
         assert res == expected
 
     def test_case_6(self):
-
         a = Node(12)
         b = Node(6)
         c = Node(6)
@@ -194,7 +185,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_7(self):
-
         a = Node(12)
         b = Node(6)
         c = Node(6)
@@ -219,7 +209,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_8(self):
-
         a = Node(7)
         b = Node(5)
         c = Node(1)
@@ -250,7 +239,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_9(self):
-
         a = Node(7)
         b = Node(5)
         c = Node(1)
@@ -281,7 +269,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_10(self):
-
         res = tree_value_count_iterative(None, 42)
         expected = 0
         assert res == expected

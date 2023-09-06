@@ -10,7 +10,6 @@ class Node:
 
 
 def path_finder_inefficient(root: Node, target: str):
-
     # Base case 1 - root == target
     if root.val == target:
         return [root.val]
@@ -33,7 +32,6 @@ def path_finder_inefficient(root: Node, target: str):
 
 
 def path_finder(root: Node, target: str):
-
     result = _path_finder(root, target)
 
     if result is None:
@@ -43,7 +41,6 @@ def path_finder(root: Node, target: str):
 
 
 def _path_finder(root: Node, target: str):
-
     # Base case 2 - node is None
     if root is None:
         return None
@@ -67,7 +64,6 @@ def _path_finder(root: Node, target: str):
 
 class Test(unittest.TestCase):
     def test_case_1(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -93,7 +89,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_2(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -119,7 +114,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_3(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -151,7 +145,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_4(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -183,7 +176,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_5(self):
-
         x = Node("x")
 
         res = path_finder(x, "x")
@@ -192,7 +184,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_6(self):
-
         res = path_finder(None, "x")  # -> None
         expected = None
 

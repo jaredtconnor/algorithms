@@ -20,7 +20,7 @@ def _sum_possible(amount, numbers, memo):
     for num in numbers:
         if _sum_possible(amount - num, numbers, memo) is True:
             memo[amount] = True
-            return True
+            return memo[amount]
 
     memo[amount] = False
     return False

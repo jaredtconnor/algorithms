@@ -10,7 +10,6 @@ class Node:
 
 
 def level_averages(root: Node):
-
     if root is None:
         return []
 
@@ -18,7 +17,6 @@ def level_averages(root: Node):
     stack = [(root, 0)]
 
     while stack:
-
         current, level_num = stack.pop()
 
         if len(levels) == level_num:
@@ -41,7 +39,6 @@ def level_averages(root: Node):
 
 
 def level_averages_bfs(root: Node):
-
     if root is None:
         return []
 
@@ -49,7 +46,6 @@ def level_averages_bfs(root: Node):
     queue = deque([(root, 0)])
 
     while queue:
-
         current, level_num = queue.popleft()
 
         if len(levels) == level_num:
@@ -155,7 +151,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_4(self):
-
         q = Node(13)
         r = Node(4)
         s = Node(2)
@@ -184,7 +179,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_5(self):
-
         res = level_averages(None)
         expected = []
         assert res == expected
@@ -272,7 +266,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_9(self):
-
         q = Node(13)
         r = Node(4)
         s = Node(2)
@@ -301,7 +294,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_10(self):
-
         res = level_averages_bfs(None)
         expected = []
         assert res == expected

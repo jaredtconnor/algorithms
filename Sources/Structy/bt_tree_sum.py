@@ -10,7 +10,6 @@ class Node:
 
 
 def tree_sum(root: Node):
-
     if root is None:
         return 0
 
@@ -18,7 +17,6 @@ def tree_sum(root: Node):
     stack = [root]
 
     while stack:
-
         current = stack.pop()
         sum += current.val
 
@@ -32,7 +30,6 @@ def tree_sum(root: Node):
 
 
 def tree_sum_recursive(root: Node):
-
     if root is None:
         return 0
 
@@ -44,7 +41,6 @@ def tree_sum_recursive(root: Node):
 
 class Test(unittest.TestCase):
     def test_case_1(self):
-
         a = Node(3)
         b = Node(11)
         c = Node(4)
@@ -101,14 +97,12 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_3(self):
-
         res = tree_sum(None)  # -> 0
         expected = 0
 
         assert res == expected
 
     def test_case_4(self):
-
         a = Node(3)
         b = Node(11)
         c = Node(4)
@@ -165,7 +159,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_5(self):
-
         res = tree_sum_recursive(None)  # -> 0
         expected = 0
 

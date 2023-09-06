@@ -10,14 +10,12 @@ class Node:
 
 
 def tree_includes(root: Node, target: str):
-
     if root is None:
         return False
 
     queue = deque([root])
 
     while queue:
-
         current = queue.popleft()
 
         if current.val == target:
@@ -33,7 +31,6 @@ def tree_includes(root: Node, target: str):
 
 
 def tree_includes_recursive(root: Node, target: str):
-
     if root is None:
         return False
 
@@ -53,7 +50,6 @@ def tree_includes_recursive(root: Node, target: str):
 
 class Test(unittest.TestCase):
     def test_case_1(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -78,7 +74,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_2(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -103,7 +98,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_3(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -129,7 +123,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_4(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -161,7 +154,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_5(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -193,14 +185,12 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_6(self):
-
         res = tree_includes(None, "b")  # -> False
         expected = False
 
         assert res == expected
 
     def test_case_7(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -225,7 +215,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_8(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -250,7 +239,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_9(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -276,7 +264,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_10(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -308,7 +295,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_11(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -340,7 +326,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_12(self):
-
         res = tree_includes_recursive(None, "b")  # -> False
         expected = False
 

@@ -10,7 +10,6 @@ class Node:
 
 
 def tree_levels_dfs(root: Node):
-
     if root is None:
         return []
 
@@ -18,7 +17,6 @@ def tree_levels_dfs(root: Node):
     stack = [(root, 0)]
 
     while stack:
-
         current, level_num = stack.pop()
 
         if len(levels) == level_num:
@@ -36,7 +34,6 @@ def tree_levels_dfs(root: Node):
 
 
 def tree_levels_bfs(root: Node):
-
     if root is None:
         return []
 
@@ -44,7 +41,6 @@ def tree_levels_bfs(root: Node):
     queue = deque([(root, 0)])
 
     while queue:
-
         current, level_num = queue.popleft()
 
         if len(levels) == level_num:
@@ -62,7 +58,6 @@ def tree_levels_bfs(root: Node):
 
 
 def tree_levels_recursive(root: None):
-
     levels = []
 
     fill_levels(root, levels, 0)
@@ -71,7 +66,6 @@ def tree_levels_recursive(root: None):
 
 
 def fill_levels(current, levels, level_num):
-
     # Base case
     if current is None:
         return
@@ -87,7 +81,6 @@ def fill_levels(current, levels, level_num):
 
 class Test(unittest.TestCase):
     def test_case_1(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -147,7 +140,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_3(self):
-
         q = Node("q")
         r = Node("r")
         s = Node("s")
@@ -178,14 +170,12 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_4(self):
-
         res = tree_levels_dfs(None)
         expected = []
 
         assert res == expected
 
     def test_case_5(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -245,7 +235,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_7(self):
-
         q = Node("q")
         r = Node("r")
         s = Node("s")
@@ -276,14 +265,12 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_8(self):
-
         res = tree_levels_bfs(None)
         expected = []
 
         assert res == expected
 
     def test_case_9(self):
-
         a = Node("a")
         b = Node("b")
         c = Node("c")
@@ -343,7 +330,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_11(self):
-
         q = Node("q")
         r = Node("r")
         s = Node("s")
@@ -374,7 +360,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_12(self):
-
         res = tree_levels_recursive(None)
         expected = []
 

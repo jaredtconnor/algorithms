@@ -10,7 +10,6 @@ class Node:
 
 
 def tree_min_value(root: Node):
-
     if root is None:
         return None
 
@@ -18,7 +17,6 @@ def tree_min_value(root: Node):
     min_val = root.val
 
     while stack:
-
         current = stack.pop()
 
         if current.val < min_val:
@@ -34,7 +32,6 @@ def tree_min_value(root: Node):
 
 
 def tree_min_value_recursive(root: Node):
-
     if root is None:
         return float("inf")
 
@@ -46,7 +43,6 @@ def tree_min_value_recursive(root: Node):
 
 class Test(unittest.TestCase):
     def test_case_1(self):
-
         a = Node(3)
         b = Node(11)
         c = Node(4)
@@ -72,7 +68,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_2(self):
-
         a = Node(5)
         b = Node(11)
         c = Node(3)
@@ -97,7 +92,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_3(self):
-
         a = Node(-1)
         b = Node(-6)
         c = Node(-5)
@@ -136,7 +130,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_5(self):
-
         a = Node(3)
         b = Node(11)
         c = Node(4)
@@ -162,7 +155,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_6(self):
-
         a = Node(5)
         b = Node(11)
         c = Node(3)
@@ -187,7 +179,6 @@ class Test(unittest.TestCase):
         assert res == expected
 
     def test_case_7(self):
-
         a = Node(-1)
         b = Node(-6)
         c = Node(-5)
