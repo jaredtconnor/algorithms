@@ -8,7 +8,6 @@ class Node:
 
 
 def merge_lists(head_a: Node, head_b: Node) -> Node:
-
     dummy = Node()  # Create a dummy node to link
     tail = dummy  # Maintain a tail
     current1 = head_a
@@ -16,7 +15,6 @@ def merge_lists(head_a: Node, head_b: Node) -> Node:
 
     # Iterate over both lists
     while current1 and current2:
-
         # Point tail to the lowest of either list
         if current1.val < current2.val:
             tail.next = current1
@@ -43,7 +41,6 @@ def merge_lists(head_a: Node, head_b: Node) -> Node:
 
 
 def print_list(head):
-
     res = ""
     current = head
 
@@ -58,7 +55,6 @@ def print_list(head):
 
 class Test(unittest.TestCase):
     def test_1(self):
-
         a = Node(5)
         b = Node(7)
         c = Node(10)

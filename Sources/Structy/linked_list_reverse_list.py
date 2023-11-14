@@ -69,7 +69,7 @@ class Test(unittest.TestCase):
         d.next = e
         e.next = f
 
-        self.assertEqual((a, "c"), True)
+       self.assertEqual((a, "c"), True)
 
 
 if __name__ == "__main__":
